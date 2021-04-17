@@ -8,7 +8,12 @@
         <% } else { %>
             <% for( let i = 0; i < sections.length; i++ ) { %>
                 <div class="m-4">
-                    <h2><%= sections[i].sectionName %> <a class="btn btn-danger btn-sm ms-2" href="/admin/delete/<%= sections[i]._id %>">Delete</a></h2>
+                    <h2><%= sections[i].sectionName %>
+                        <% if (auth==3) { %>
+                            <a class="btn btn-danger btn-sm ms-2" href="/admin/delete/<%= sections[i]._id %>">Delete</a>
+                            
+                        <% } %>
+                    </h2>
                     <ul>
                         <% for( let j = 0; j < sections[i].links.length; j++ ) { %>
                             <li class="m-2">
