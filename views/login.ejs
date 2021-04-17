@@ -1,0 +1,37 @@
+    <%- include('includes/header')  %> 
+</head>
+<body>
+    <%- include('includes/navigations')  %> 
+    <main class="bg-light">
+        <h2 class="text-center mb-3">Login</h2>
+        <div class="my-form m-auto">
+            <form class="ms-3 me-3" action="/login" method="POST">
+    
+    
+                <!-- Text input -->
+                <div class="form-outline mb-4">
+                    <input type="email" id="form6Example3" class="form-control" name="email" placeholder="Email"
+                     required />
+                </div>
+    
+                <!-- Text input -->
+                <div class="form-outline mb-4">
+                    <input type="password" id="form6Example5" class="form-control" name="password" placeholder="Password"
+                     required />
+                </div>
+    
+    
+                <!-- Submit button -->
+                <button type="submit" class="btn btn-primary btn-block mb-4">Submit</button>
+                <% if (errorMessage) { %>
+                    <p class="fadeIn fourth" style="color: rgb(243, 36, 36);"><%= errorMessage %></p>
+                <% } %>
+            </form>
+        </div>
+    
+    
+    </main>
+    <%- include('includes/footer')  %> 
+</body>
+
+</html>

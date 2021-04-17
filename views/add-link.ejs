@@ -1,0 +1,45 @@
+    <%- include('includes/header')  %> 
+</head>
+<body>
+    <%- include('includes/navigations', {path: '/admin/add-link'})  %> 
+
+    <main class="bg-light">
+        <h2 class="text-center mb-3">Add-Link</h2>
+        <div class="my-form m-auto">
+            <form class="ms-3 me-3" action="/admin/add-link" method="POST">
+    
+    
+                <!-- Text input -->
+                <div class="form-outline mb-4">
+                    <input type="text" id="form6Example3" class="form-control" name="section" placeholder="Section Name" required />
+                </div>
+    
+                <!-- Text input -->
+                <div class="form-outline mb-4">
+                    <input type="text" id="form6Example5" class="form-control" name="text" placeholder="Text"
+                        required />
+                </div>
+    
+                <!-- Text input -->
+                <div class="form-outline mb-4">
+                    <input type="text" id="form6Example4" class="form-control" name="link" placeholder="Link"
+                        required />
+                </div>
+    
+                <!-- Message input -->
+                <div class="form-outline mb-4">
+                    <textarea class="form-control" id="form6Example7" rows="4" name="desc" placeholder="Description"
+                        required></textarea>
+                </div>
+    
+                <!-- Submit button -->
+                <button type="submit" class="btn btn-primary btn-block mb-4">Submit</button>
+            </form>
+        </div>
+    
+    
+    </main>
+    <%- include('includes/footer')  %> 
+</body>
+
+</html>

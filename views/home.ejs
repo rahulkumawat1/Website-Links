@@ -1,0 +1,33 @@
+    <%- include('includes/header')  %> 
+</head>
+<body>
+    <%- include('includes/navigations')  %> 
+    <main>
+        <% if (sections.length == 0) { %>
+            <h1>No section</h1>
+        <% } else { %>
+            <% for( let i = 0; i < sections.length; i++ ) { %>
+                <div class="m-4">
+                    <h2><%= sections[i].sectionName %> <a class="btn btn-danger btn-sm ms-2" href="/admin/delete/<%= sections[i]._id %>">Delete</a></h2>
+                    <ul>
+                        <% for( let j = 0; j < sections[i].links.length; j++ ) { %>
+                            <li class="m-2">
+                                <a style="text-decoration: none;" target="_blank" href="<%= sections[i].links[j].link %>"><%= sections[i].links[j].text %> </a>
+                                 - <%= sections[i].links[j].desc %>
+                                <% if (auth == 3) { %>
+                                    <a class="btn btn-outline-primary btn-sm ms-2" href="/admin/edit/<%= sections[i]._id + '/' + j %>">Edit</a>
+                                    <a class="btn btn-outline-danger btn-sm ms-2" href="/admin/delete/<%= sections[i]._id + '/' + j %>">Delete</a>
+                                <% } %>
+                            </li>
+                        <% } %>
+                    </ul>
+                    <hr>
+                </div>
+            <% } %>
+        <% } %>
+         
+    </main>
+    <%- include('includes/footer')  %> 
+</body>
+
+</html>

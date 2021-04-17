@@ -1,0 +1,29 @@
+    <%- include('includes/header')  %> 
+</head>
+<body>
+    <%- include('includes/navigations', {path: '/admin/user'})  %> 
+    <main>
+        <ul>
+            <% for( let i = 0; i < users.length; i++ ) { %>
+                <li class="m-4">
+                    Email: <%= users[i].email %> 
+                    <form action="/admin/users/<%= users[i]._id %>" method="POST">
+                        <select name="userType" id="">
+                            <option value="1" <%= users[i].type == 1 ? "selected" : "" %> >Not-Auth</option>
+                            <option value="2" <%= users[i].type == 2 ? "selected" : "" %>>Student</option>
+                            <option value="3" <%= users[i].type == 3 ? "selected" : "" %>>Admin</option>
+                        </select>
+                        <input class="btn btn-primary btn-sm" type="submit" value="submit">
+                    </form>
+                    <a class="btn btn-danger m-4" href="/admin/delete-user/<%= users[i]._id %>">Delete User</a>
+                </li>
+                <% if (i != users.length - 1) { %>
+                    <hr>
+                <% } %>
+            <% } %>
+        </ul>
+    </main>
+    <%- include('includes/footer')  %> 
+</body>
+
+</html>

@@ -1,0 +1,45 @@
+    <%- include('includes/header')  %> 
+</head>
+<body>
+    <%- include('includes/navigations', {path: '/edit-link'})  %> 
+
+    <main class="bg-light">
+        <h2 class="text-center mb-3">Add-Link</h2>
+        <div class="my-form m-auto">
+            <form class="ms-3 me-3" action="/admin/edit" method="POST">
+    
+    
+                <!-- Text input -->
+                <div class="form-outline mb-4">
+                    <input type="text" id="form6Example3" class="form-control" name="section" placeholder="Section Name" value=<%= sectionName %> required />
+                </div>
+    
+                <!-- Text input -->
+                <div class="form-outline mb-4">
+                    <input type="text" id="form6Example5" class="form-control" name="text" placeholder="Text" value=<%= link.text %> required />
+                </div>
+    
+                <!-- Text input -->
+                <div class="form-outline mb-4">
+                    <input type="text" id="form6Example4" class="form-control" name="link" placeholder="Link" value=<%= link.link %> required />
+                </div>
+
+                <input type="hidden" name="index" value=<%=index %> >
+                <input type="hidden" name="oldSectionName" value=<%=sectionName %> >
+    
+                <!-- Message input -->
+                <div class="form-outline mb-4">
+                    <textarea class="form-control" id="form6Example7" rows="4" name="desc" placeholder="Description" required><%= link.desc %></textarea>
+                </div>
+    
+                <!-- Submit button -->
+                <button type="submit" class="btn btn-primary btn-block mb-4">Submit</button>
+            </form>
+        </div>
+    
+    
+    </main>
+    <%- include('includes/footer')  %> 
+</body>
+
+</html>

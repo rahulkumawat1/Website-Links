@@ -1,0 +1,13 @@
+main {
+  min-height: calc(100vh - 57px);
+}
+
+.my-form {
+  width: 100%;
+}
+
+@media only screen and (min-width: 600px) {
+  .my-form {
+    width: 50%;
+  }
+}
