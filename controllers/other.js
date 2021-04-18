@@ -20,7 +20,7 @@ exports.postLogin = (req, res, next) => {
 
                 req.session.userId = user._id;
                 req.session.loggedIn = true;
-                req.session.user_t = user.type;
+                
                 req.session.save((err) => {
                     console.log(err);
                     if(user.type == 1)

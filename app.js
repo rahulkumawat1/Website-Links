@@ -6,6 +6,7 @@ const session = require('express-session');
 const flash = require('connect-flash');
 const MongoDBStore = require('connect-mongodb-session')(session);
 
+const User = require('./models/user');
 const isAuth = require('./middlewares/isAuth');
 const adminRouter = require('./routers/admin');
 const otherRouter = require('./routers/other');
@@ -40,14 +41,24 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use((req, res, next) => {
-    const auth_t = req.session.user_t;
-    const isAuth = req.session.loggedIn;
-    let auth = 0;
-    if(isAuth == true) auth = auth_t;
 
-    res.locals.auth = auth;
+    if(req.session.loggedIn){
+        User.findById(req.session.userId)
+            .then(user => {
+                if(!user){
+                    res.locals.auth = 0;
+                    return req.session.destroy();
+                }
+                req.user = user;
+                return res.locals.auth = user.type;
+            })
+            .then(result => next())
+    }
+    else{
+        res.locals.auth = 0;
+        next();
+    }
 
-    next();
 });
 
 app.use(otherRouter);
